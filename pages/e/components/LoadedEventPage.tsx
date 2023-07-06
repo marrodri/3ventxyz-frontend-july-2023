@@ -7,7 +7,7 @@ import DateCard from './dateCard'
 import RegisterEventButton from './registerEventButton'
 import { useEvents } from '../../../contexts/events'
 import { useUsers } from '../../../contexts/users'
-import Button from '../../../components/buttons/button'
+import { Button } from '../../../components/buttons/button'
 
 // useRef for passing the host data that is fetched from the eid page.
 export default function LoadedEventPage({
@@ -41,26 +41,14 @@ export default function LoadedEventPage({
           />
           <SocialFeed
             isMobile={false}
-            avatar={
-              users.loggedInUserData?.avatar !== undefined
-                ? users.loggedInUserData?.avatar
-                : ''
-            }
-            username={
-              users.loggedInUserData?.username !== undefined
-                ? users.loggedInUserData?.username
-                : ''
-            }
-            eid={events?.accessedEventData?.event_id}
-            uid={events?.accessedEventData?.uid}
+            userData={users.loggedInUserData}
+            eventData={events.accessedEventData}
           />
         </div>
         <div id="second-col" className="w-[330px] space-y-5 ">
           <LocationCard event={events?.accessedEventData} />
           <DateCard event={events?.accessedEventData} />
-          <RegisterEventButton
-            setShowModal={setShowModal}
-          />
+          <RegisterEventButton setShowModal={setShowModal} />
           {isEventCreator ? (
             <div>
               <Button

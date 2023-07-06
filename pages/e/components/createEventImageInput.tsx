@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import FileImageInput from '../../../components/inputs/fileImageInput'
+import { FileImageInput } from '../../../components/inputs/fileImageInput'
 import PredefinedEventPictures from './predefinedEventPictures'
 
 export default function CreateEventImageInput({
@@ -10,7 +10,8 @@ export default function CreateEventImageInput({
   imgMenuClassName = '',
   landingMode,
   setFileImg,
-  setPredefinedImgUrl
+  setPredefinedImgUrl,
+  onFocus = () => {}
 }: {
   labelText: string
   fileImg: File | null
@@ -20,8 +21,9 @@ export default function CreateEventImageInput({
   landingMode: boolean
   setFileImg: (name: string, fileImg: File) => void
   setPredefinedImgUrl: (name: string, predefinedImgUrl: string) => void
+  onFocus: () => void
 }) {
-  const [menuVisible, setMenuVisible] = useState(true)
+  const [menuVisible, setMenuVisible] = useState(false)
   const imgUrlName = landingMode ? 'landing_img_url' : 'event_img_url'
   const fileImgName = landingMode ? 'landing_file_img' : 'event_file_img'
 
@@ -51,7 +53,12 @@ export default function CreateEventImageInput({
           Predefined Images
         </span>
       </div>
-      <div className="z-10">
+      <div
+        onClick={() => {
+          onFocus()
+        }}
+        className="z-10"
+      >
         <FileImageInput
           name={fileImgName}
           fileImg={fileImg}

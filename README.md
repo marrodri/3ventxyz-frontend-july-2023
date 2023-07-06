@@ -1,5 +1,7 @@
 # 3vent Frontend Repository
 
+NOTE: This repository is meant to be runned locally.
+
 ## First Time Installation + Set Up
 
 - `yarn install` root level dependencies

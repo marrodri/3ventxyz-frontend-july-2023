@@ -6,15 +6,15 @@ import ErrorFormMsg from '../../components/utils/errorMsg'
 import { db } from '../../services/firebase_config'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import Spinner from '../../components/utils/spinner'
-import Button from '../../components/buttons/button'
-import TextInput from '../../components/inputs/textInput'
+import { Spinner } from '../../components/utils/spinner'
+import { Button } from '../../components/buttons/button'
+import { TextInput } from '../../components/inputs/textInput'
 import { uploadImageToStorage } from '../../services/upload_image_to_storage'
-import LocationInput from '../../components/inputs/locationInput'
+import { LocationInput } from '../../components/inputs/locationInput'
 import { LocationData } from '../../shared/interface/common'
 import { useAuth } from '../../contexts/auth'
 import { useRouter } from 'next/router'
-import FileImageInput from '../../components/inputs/fileImageInput'
+import { FileImageInput } from '../../components/inputs/fileImageInput'
 import { uploadEventInfo } from '../../services/upload_event_info'
 import updateCreatedEventToUser from '../../services/update_created_event_to_user'
 import setFiletype from '../../shared/utils/setFileType'
@@ -171,9 +171,11 @@ export default function EditEvent() {
               description: eventDescription,
               location: eventLocation,
               img_url: url,
+              landing_portrait_url: '',
               ticket_max: ticketMax,
               event_id: eventId,
-              registered_attendees: registeredAttendees
+              registered_attendees: registeredAttendees,
+              tags: []
             })
             await updateCreatedEventToUser({
               title: title,
@@ -194,9 +196,11 @@ export default function EditEvent() {
           description: eventDescription,
           location: eventLocation,
           img_url: currEventImgURl,
+          landing_portrait_url: '',
           ticket_max: ticketMax,
           event_id: eventId,
-          registered_attendees: registeredAttendees
+          registered_attendees: registeredAttendees,
+          tags: []
         })
         await updateCreatedEventToUser({
           title: title,
