@@ -1,3 +1,4 @@
+import { StringColorFormat } from '@faker-js/faker'
 import { EmailAuthCredential } from '@firebase/auth'
 import { CreateEventInputs } from '../enums/enums'
 
@@ -47,13 +48,16 @@ export interface EventHostInterface {
 export interface AllowlistUser {
   uid: string
   email: string
+  phone: string
   wallet: string
   twitter_id: string
   twitter_name: string
   discord_username: string
+  discord_id: string
   discord_guild: boolean
   userTokens: boolean
   status: string
+  id: number
 }
 
 export interface AllowlistTableHeader {
@@ -84,7 +88,20 @@ export interface AllowlistInterface {
   title: string
   description?: string
   allowlist_id?: string
-  allowlist: Array<string>
+  length: number
+  wallet: boolean
+  twitter: boolean
+  twitterFollowing: boolean
+  twitterAccountId: string
+  discord: boolean
+  discordGuild: boolean
+  discordGuildId: string
+  email: boolean
+  permalink: string
+  checkTokens: boolean
+  contractAddress: string
+  checkNumOfTokens: boolean
+  numberOfTokens: number
 }
 
 export interface PostInterface {
